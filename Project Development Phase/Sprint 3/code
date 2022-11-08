@@ -1,1 +1,59 @@
+#D. column must contain one of these 4 classes
+#1. Divide the 4 classes
+la = data[data['Counties']=='Los Angeles'].sort_values(by='Started').reset_index().drop(['index','AcresBurned'],axis=1)
+data = data.sort_values(by='Started').reset_index().drop(['index'],axis=1)
+data = data.drop([0,1]).reset_index().drop('index',axis=1)
+non_la = data[data['Counties']!='Los Angeles'].reset_index().drop('index',axis=1)
+non_la['AcresBurned'] = non_la['AcresBurned'].fillna(non_la['AcresBurned'].mean())
+one_three = []
+three_seven = []
+seven_ten = []
+no = []
+for i in range(len(la)):
+  diff = non_la['Started']-la['Started'].loc[i]
+  diff = diff.reset_index().drop('index',axis=1)
+  s = diff.Started.tolist()
+  for d in range(len(s)):
+    day = s[d].days
+    if (day<=-1) == True and (day>=-3)==True:
+      one_three.append(d)
+    if (day<-3) == True and  (day>=-7) == True:
+      three_seven.append(d)
+    if (day<-7) == True and  (day>=-10)==True:
+      seven_ten.append(d)
+    if (day<-10)==True:
+      no.append(d)
 
+#2.Group them all into single datasets
+
+one_three_data = non_la.loc[one_three][0:180]
+one_three_data['Class'] = ['1-3 Days']*len(one_three_data)
+three_seven_data = non_la.loc[three_seven][0:180]
+three_seven_data['Class'] = ['3-7 Days']*len(three_seven_data) 
+seven_ten_data = non_la.loc[seven_ten][0:180]
+seven_ten_data['Class'] = ['7-10 Days']*len(seven_ten_data)
+no_fire_data = non_la.loc[no][0:180]
+no_fire_data['Class'] = ['No Wildfire (+10 Days)']*len(no_fire_data)
+no_fire_data = no_fire_data.sample(frac=1)
+
+#3. Create the final dataset
+
+wildfire_data = one_three_data.append(three_seven_data).append(seven_ten_data).append(no_fire_data)
+wildfire_data = wildfire_data.reset_index().drop('index',axis=1)
+distances_la = []
+for i in range(len(wildfire_data)):
+  distances_la.append(dist_data[wildfire_data['Counties'].loc[i]].loc['Los Angeles'])
+wildfire_data['Distance'] = distances_la
+wildfire_data['Class'] = LabelEncoder().fit_transform(wildfire_data.Class)
+years = []
+months = []
+days = []
+for i in range(len(wildfire_data)):
+  years.append(wildfire_data.Started[i].year)
+  months.append(wildfire_data.Started[i].month)
+  days.append(wildfire_data.Started[i].day)
+wildfire_data['Year'] = years
+wildfire_data['Month'] = months
+wildfire_data['Days'] = days
+wildfire_data = wildfire_data.sample(frac=1)
+wildfire_data
