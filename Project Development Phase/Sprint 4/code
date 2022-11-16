@@ -1,1 +1,18 @@
-
+from pycaret.classification import *
+X = wildfire_data[['Distance','Year','Month','Days','AcresBurned']]
+Y = wildfire_data.Class
+data_classification = wildfire_data[['Distance','Year','Month','Days','AcresBurned','Class']]
+data_classification['Year'] = data_classification['Year'].astype(float)
+data_classification['Month'] = data_classification['Month'].astype(float)
+data_classification['Day'] = data_classification['Days'].astype(float)
+data_classification = data_classification.dropna()
+data_classification 
+s = setup(data_classification, target = 'Class',imputation_type='iterative',train_size=0.9)
+model = finalize_model(et)
+X_train,X_test,y_train,y_test = train_test_split(X,Y, train_size=0.9)
+results = pd.DataFrame({'Predict':model.predict(X_test),'Target':y_test})
+from sklearn.metrics import confusion_matrix
+sns.heatmap(confusion_matrix(results['Predict'],results['Target']),annot=True,xticklabels=['1-3 Days','3-7 Days','7-10 Days','No Wildfire']
+            ,yticklabels=['1-3 Days','3-7 Days','7-10 Days','No Wildfire'],cmap='plasma')
+plt.ylabel('Predicted')
+plt.xlabel('Target')
