@@ -1,0 +1,119 @@
+
+Distance	Year	Month	Days	AcresBurned	Class	Day
+84	860.050831	2017.0	6.0	28	562.0	0	28.0
+180	365.081301	2013.0	5.0	12	15.0	1	12.0
+681	78.997746	2013.0	5.0	1	3166.0	3	1.0
+517	860.050831	2018.0	7.0	14	52.0	2	14.0
+708	88.375892	2013.0	5.0	2	24251.0	3	2.0
+...	...	...	...	...	...	...	...
+252	594.822615	2017.0	6.0	13	22.0	1	13.0
+573	463.504754	2013.0	7.0	12	150.0	3	12.0
+345	216.131454	2017.0	11.0	29	99.0	1	29.0
+75	418.027067	2017.0	6.0	28	630.0	0	28.0
+270	325.376205	2017.0	6.0	23	357.0	1	23.0
+
+
+
+
+
+Description	Value
+0	session_id	3211
+1	Target	Class
+2	Target Type	Multiclass
+3	Label Encoded	0: 0, 1: 1, 2: 2, 3: 3
+4	Original Data	(720, 7)
+5	Missing Values	False
+6	Numeric Features	6
+7	Categorical Features	0
+8	Ordinal Features	False
+9	High Cardinality Features	False
+10	High Cardinality Method	None
+11	Transformed Train Set	(648, 5)
+12	Transformed Test Set	(72, 5)
+13	Shuffle Train-Test	True
+14	Stratify Train-Test	False
+15	Fold Generator	StratifiedKFold
+16	Fold Number	10
+17	CPU Jobs	-1
+18	Use GPU	False
+19	Log Experiment	False
+20	Experiment Name	clf-default-name
+21	USI	d2b9
+22	Imputation Type	iterative
+23	Iterative Imputation Iteration	5
+24	Numeric Imputer	mean
+25	Iterative Imputation Numeric Model	Light Gradient Boosting Machine
+26	Categorical Imputer	constant
+27	Iterative Imputation Categorical Model	Light Gradient Boosting Machine
+28	Unknown Categoricals Handling	least_frequent
+29	Normalize	False
+30	Normalize Method	None
+31	Transformation	False
+32	Transformation Method	None
+33	PCA	False
+34	PCA Method	None
+35	PCA Components	None
+36	Ignore Low Variance	False
+37	Combine Rare Levels	False
+38	Rare Level Threshold	None
+39	Numeric Binning	False
+40	Remove Outliers	False
+41	Outliers Threshold	None
+42	Remove Multicollinearity	False
+43	Multicollinearity Threshold	None
+44	Remove Perfect Collinearity	True
+45	Clustering	False
+46	Clustering Iteration	None
+47	Polynomial Features	False
+48	Polynomial Degree	None
+49	Trignometry Features	False
+50	Polynomial Threshold	None
+51	Group Features	False
+52	Feature Selection	False
+53	Feature Selection Method	classic
+54	Features Selection Threshold	None
+55	Feature Interaction	False
+56	Feature Ratio	False
+57	Interaction Threshold	None
+58	Fix Imbalance	False
+59	Fix Imbalance Method	SMOTE
+
+
+
+
+	Model	Accuracy	AUC	Recall	Prec.	F1	Kappa	MCC	TT (Sec)
+et	Extra Trees Classifier	0.7098	0.8255	0.7106	0.7223	0.7108	0.6127	0.6156	0.468
+rf	Random Forest Classifier	0.6788	0.8635	0.6800	0.6838	0.6754	0.5717	0.5749	0.518
+lightgbm	Light Gradient Boosting Machine	0.6773	0.8805	0.6787	0.6791	0.6728	0.5698	0.5726	0.124
+gbc	Gradient Boosting Classifier	0.6695	0.8779	0.6708	0.6696	0.6634	0.5594	0.5629	0.447
+dt	Decision Tree Classifier	0.6527	0.7882	0.6540	0.6687	0.6539	0.5367	0.5406	0.018
+lda	Linear Discriminant Analysis	0.5662	0.8007	0.5716	0.5255	0.5282	0.4225	0.4347	0.018
+ridge	Ridge Classifier	0.5415	0.0000	0.5479	0.5071	0.4929	0.3901	0.4065	0.014
+nb	Naive Bayes	0.5262	0.7827	0.5284	0.5052	0.4754	0.3679	0.3922	0.021
+qda	Quadratic Discriminant Analysis	0.5244	0.7668	0.5270	0.5337	0.4708	0.3654	0.3918	0.018
+ada	Ada Boost Classifier	0.5062	0.7260	0.5116	0.5022	0.4690	0.3432	0.3619	0.114
+lr	Logistic Regression	0.4381	0.7272	0.4396	0.4147	0.4076	0.2512	0.2609	0.398
+knn	K Neighbors Classifier	0.4291	0.6545	0.4290	0.4264	0.4187	0.2377	0.2410	0.117
+svm	SVM - Linear Kernel	0.2686	0.0000	0.2687	0.2677	0.2212	0.0248	0.0292	0.063
+
+
+
+
+
+Accuracy	AUC	Recall	Prec.	F1	Kappa	MCC
+0	0.7538	0.9551	0.7555	0.7717	0.7576	0.6718	0.6755
+1	0.7538	0.9421	0.7555	0.7613	0.7511	0.6720	0.6761
+2	0.8000	0.9475	0.8010	0.7978	0.7963	0.7332	0.7348
+3	0.8769	0.9682	0.8765	0.8794	0.8751	0.8358	0.8377
+4	0.7846	0.9271	0.7843	0.8045	0.7845	0.7121	0.7192
+5	0.7385	0.9269	0.7441	0.7402	0.7303	0.6521	0.6573
+6	0.7385	0.9214	0.7382	0.7392	0.7352	0.6513	0.6532
+7	0.6308	0.8689	0.6353	0.6224	0.6150	0.5082	0.5141
+8	0.6250	0.8869	0.6324	0.6280	0.6190	0.4998	0.5030
+9	0.7500	0.9248	0.7500	0.7503	0.7472	0.6667	0.6686
+Mean	0.7452	0.9269	0.7473	0.7495	0.7411	0.6603	0.6639
+SD	0.0705	0.0286	0.0685	0.0735	0.0737	0.0939	0.0933
+
+
+
+
